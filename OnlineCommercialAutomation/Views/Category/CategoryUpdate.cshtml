@@ -1,0 +1,29 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.Category
+
+@{
+    ViewBag.Title = "CategoryUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+
+<h2>CategoryUpdate</h2>
+<h2>@Model.Id</h2>
+<h2>@Model.Name</h2>
+
+<br />
+
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Id)
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-info" style="margin-top:20px">Update </button>
+}

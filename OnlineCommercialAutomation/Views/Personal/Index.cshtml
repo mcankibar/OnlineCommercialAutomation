@@ -1,0 +1,43 @@
+﻿@model List<OnlineCommercialAutomation.Models.Classes.Personal>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personal List</h2>
+<br />
+
+
+<table class="table table-bordered">
+  
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+
+        <th>Surname</th>
+
+        <th>Department</th>
+
+        <th>Image</th>
+        <th>Update</th>
+        <th>Sale Transactions</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <th>@item.Name</th>
+            <th>@item.Surname</th>
+            <th>@item.Department.Name</th>
+            <th>@item.ImageUrl</th>
+            <th><a href="/Personal/PersonalUpdate/@item.Id" class="btn btn-outline-warning">Update</a></th>
+            <th><a href="/Department/DepartmentPersonalSales/@item.Id" class="btn btn-outline-light" style="background-color:darkslateblue">Details</a></th>
+            
+        </tr>
+    }
+</table>
+
+<a href="/Personal/PersonalAdd" class="btn btn-info">Personal Add</a>
+

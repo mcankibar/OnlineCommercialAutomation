@@ -1,0 +1,35 @@
+﻿@using OnlineCommercialAutomation.Models.Classes
+@model List<Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Customer Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>City</th>
+        <th>Mail</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Details</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.City</td>
+                    <td>@item.Mail</td>
+                    <td><a href="/Customer/CustomerRemove/@item.Id" class="btn btn-danger">Delete</a></td>
+                    <td><a href="/Customer/CustomerUpdate/@item.Id" class="btn btn-warning">Update</a></td>
+                    <td><a href="/Customer/CustomerSales/@item.Id" class="btn btn-danger" style="background-color:darkslateblue">Sales History</a></td>
+                </tr>
+            }
+</table>
+
+<a href="/Customer/CustomerAdd" class="btn btn-info">Customer Add</a>

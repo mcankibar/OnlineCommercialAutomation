@@ -1,0 +1,48 @@
+﻿@using OnlineCommercialAutomation.Models.Classes
+
+@model List<OnlineCommercialAutomation.Models.Classes.Personal>
+
+
+@{
+    ViewBag.Title = "DepartmentDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Department Detail</h2>
+
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+        Department Name : @ViewBag.DepartmentName
+    </li>
+</ol>  
+
+
+<table class="table table-hover">
+    <tr>
+        <th>Personal Name</th>
+        <th>Department</th>
+        <th>Görsel</th>
+        <th>Sales</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @($"{item.Name} {item.Surname}")
+            </td>
+            <td>
+                @item.Department.Name
+            </td>
+            <td>
+                @item.ImageUrl
+            </td>
+            <td>
+                <a href="/Department/DepartmentPersonalSales/@item.Id" class="btn btn-default" style="background: linear-gradient(135deg, #ff6a00, #e97f24); ">Sales</a>
+            </td>
+        </tr>
+    }
+</table>

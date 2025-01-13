@@ -1,0 +1,134 @@
+﻿@using OnlineCommercialAutomation.Models.Classes
+@model List<OnlineCommercialAutomation.Models.Classes.Department>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Department Name
+        </th>
+        <th>
+            Delete
+        </th>
+        <th>
+            Update
+        </th>
+        <th>
+            Details
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+
+            <td><a href="/Department/DepartmentRemove/@item.Id" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Department/DepartmentUpdate/@item.Id" class="btn btn-success">Update</a></td>
+            <td><a href="/Department/DepartmentDetail/@item.Id" class="btn btn-success" style="background-color:darkslateblue">Details</a></td>
+
+        </tr>
+    }
+
+
+</table>
+
+<a href="/Department/DepartmentAdd" class="btn btn-primary">Add Department</a>
+
+
+
+<style>
+    /* Tablo Tasarımı */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        color: #ecf0f1;
+    }
+
+    th {
+        background-color: #1abc9c;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+    }
+
+    td {
+        padding: 12px;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(44, 62, 80, 0.8); /* Daha koyu gri */
+    }
+
+    tr:nth-child(odd) {
+        background-color: rgba(52, 73, 94, 0.8); /* Daha açık gri */
+    }
+
+    tr:hover {
+        background-color: rgba(22, 160, 133, 0.9); /* Üzerine gelindiğinde yeşil ton */
+        transition: background-color 0.3s;
+    }
+
+    /* Buton Tasarımı */
+    .btn-danger {
+        background-color: #e74c3c; /* Koyu kırmızı */
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            transition: background-color 0.3s;
+        }
+
+    .btn-success {
+        background-color: #27ae60; /* Koyu yeşil */
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .btn-success:hover {
+            background-color: #229954;
+            transition: background-color 0.3s;
+        }
+
+    .btn-primary {
+        background-color: #2980b9; /* Koyu mavi */
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .btn-primary:hover {
+            background-color: #2471a3;
+            transition: background-color 0.3s;
+        }
+</style>

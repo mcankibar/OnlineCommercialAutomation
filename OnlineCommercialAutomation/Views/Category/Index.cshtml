@@ -1,0 +1,46 @@
+﻿@using OnlineCommercialAutomation.Models.Classes
+@model List<OnlineCommercialAutomation.Models.Classes.Category>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Category Name
+        </th>
+        <th>
+            Delete
+        </th>
+        <th>
+            Update
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/Category/CategoryRemove/@item.Id" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Category/CategoryUpdate/@item.Id" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+
+     
+</table>
+
+<a href="/Category/CategoryAdd" class="btn btn-primary">Add Category</a>
+

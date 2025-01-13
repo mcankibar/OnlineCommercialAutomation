@@ -1,0 +1,21 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.Category
+@{
+    ViewBag.Title = "CategoryAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>CategoryAdd</h2>
+
+<br />
+
+<form class="from-group" method="post">
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name,new {@class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Save</button>
+
+
+
+</form>
+

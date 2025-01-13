@@ -1,0 +1,68 @@
+﻿@model List<OnlineCommercialAutomation.Models.Classes.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Product
+        </th>
+        <th>
+            Manufacturer
+        </th>
+        <th>
+            Stock
+        </th>
+        <th>
+            PurchasePrice
+        </th>
+        <th>
+            SalePrice
+        </th>
+        <th>
+            IsActive
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Manufacturer</td>
+            <td>@product.Stock</td>
+            <td>@product.PurchasePrice</td>
+            <td>@product.SalePrice</td>
+            <td>@product.IsActive</td>
+            <td>@product.Category.Name</td>
+            <td>@product.ProductImageUrl</td>
+            <td><a href="/Product/ProductDelete/@product.Id" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Product/ProductUpdate/@product.Id" class="btn btn-success">Update</a></td>
+
+        </tr>
+    }
+</table>
+
+<a href="/Product/ProductAdd" class="btn btn-primary">Add Product</a>
+
+
+

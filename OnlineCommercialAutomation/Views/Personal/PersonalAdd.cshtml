@@ -1,0 +1,39 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.Personal
+
+@{
+    ViewBag.Title = "PersonalAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>PersonalAdd</h2>
+<br />
+
+
+<form class="from-group" method="post">
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Surname)
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.ImageUrl)
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.DepartmentId)
+    @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
+
+    <br />
+
+
+
+    <button class="btn btn-info">Add</button>
+
+
+
+</form>

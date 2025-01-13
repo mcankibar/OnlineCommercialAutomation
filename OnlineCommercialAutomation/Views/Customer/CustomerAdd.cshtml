@@ -1,0 +1,30 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.Customer
+
+@{
+    ViewBag.Title = "CustomerAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CustomerAdd</h2>
+
+<form class="from-group" method="post">
+    @Html.HiddenFor(x => x.Id)
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.LabelFor(x => x.Surname)
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    @Html.LabelFor(x => x.City)
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+  
+
+    <br />
+
+
+    <button class="btn btn-info">Save</button>
+
+
+
+</form>
+
