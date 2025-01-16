@@ -1,0 +1,63 @@
+﻿@model List<OnlineCommercialAutomation.Models.Classes.SalesTransaction>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin:20px 0px 20px 0px ">Sales List</h2>
+
+<table id="tbl1" class="table table-responsive-lg" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Customer</th>
+
+
+            <th>Personal</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Total Price</th>
+
+            <th>Date</th>
+            <th>Update</th>
+            <th>Details</th>
+
+        </tr>
+    </thead>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Product.Name</td>
+            <td>@item.Customer.Name @item.Customer.Surname</td>
+            <td>@item.Personal.Name @item.Personal.Surname</td>
+            <td>@item.Amount</td>
+            <td>@item.Price</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date</td>
+            <td><a href="/Sale/SaleUpdate/@item.Id" class="btn btn-outline-warning">Update</a></td>
+            <td><a href="/Sale/SaleDetail/@item.Id" class="btn btn-outline-light" style="background-color:darkslateblue">Details</a></td>
+
+        </tr>
+    }
+</table>
+
+<a href="/Sale/SaleAdd" class="btn btn-info">Add Sale</a>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

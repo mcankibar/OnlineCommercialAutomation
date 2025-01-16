@@ -1,0 +1,53 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.Invoice
+@{
+    ViewBag.Title = "InvoiceUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+
+<h2>InvoiceUpdate</h2>
+<br />
+
+<form class="from-group" method="post">
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.LabelFor(x => x.SerialNumber)
+    @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.OrderNumber)
+    @Html.TextBoxFor(x => x.OrderNumber, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.TaxOffice)
+    @Html.TextBoxFor(x => x.TaxOffice, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Time)
+    @Html.TextBoxFor(x => x.Time, new { @class = "form-control" })
+    <br />
+
+
+
+    @Html.LabelFor(x => x.DeliveredBy)
+    @Html.TextBoxFor(x => x.DeliveredBy, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.ReceivedBy)
+    @Html.TextBoxFor(x => x.ReceivedBy, new { @class = "form-control" })
+    <br />
+
+
+
+
+    <button class="btn btn-info">Update Invoice </button>
+
+
+
+</form>

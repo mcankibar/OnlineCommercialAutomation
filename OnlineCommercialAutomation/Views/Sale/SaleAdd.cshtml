@@ -1,0 +1,48 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.SalesTransaction
+@{
+    ViewBag.Title = "SaleAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sale Add Page</h2>
+
+<form class="from-group" method="post">
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.LabelFor(x => x.Product)
+    @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.Products, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Customer)
+    @Html.DropDownListFor(x => x.CustomerId, (List<SelectListItem>)ViewBag.Customers, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Personal)
+    @Html.DropDownListFor(x => x.PersonalId, (List<SelectListItem>)ViewBag.Personals, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Amount)
+    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.TotalPrice)
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+
+    <br />
+
+
+
+    <button class="btn btn-info">Add</button>
+
+
+
+</form>

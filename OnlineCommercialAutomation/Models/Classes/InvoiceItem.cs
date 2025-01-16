@@ -19,7 +19,10 @@ namespace OnlineCommercialAutomation.Models.Classes
         public decimal PricePerUnit { get; set; }
         public decimal TotalPrice { get; set; }
 
-        public Invoice Invoices { get; set; }
+        [ForeignKey("Invoices")]
+        public int InvoiceId { get; set; }
+
+        public virtual Invoice Invoices { get; set; }
 
     }
 }

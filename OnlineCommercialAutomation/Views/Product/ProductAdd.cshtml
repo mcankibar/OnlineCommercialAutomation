@@ -1,4 +1,4 @@
-﻿@model OnlineCommercialAutomation.Models.Classes.Product
+﻿@model OnlineCommercialAutomation.ViewModels.ProductVM
 @{
     ViewBag.Title = "ProductAdd";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -19,6 +19,8 @@
     @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
     <br />
 
+
+
     @Html.LabelFor(x => x.Manufacturer)
     @Html.TextBoxFor(x => x.Manufacturer, new { @class = "form-control" })
     <br />
@@ -35,8 +37,8 @@
     @Html.TextBoxFor(x => x.SalePrice, new { @class = "form-control" })
     <br />
 
-    @Html.LabelFor(x => x.Category)
-    @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.categoryValues,new {@class="form-control"})
+    @Html.LabelFor(x => x.CategoryId)
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryValues, new { @class = "form-control" })
     @*@Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })*@
     <br />
 
@@ -46,6 +48,11 @@
 
     @Html.LabelFor(x => x.IsActive)
     @Html.TextBoxFor(x => x.IsActive, new { @class = "form-control" })
+    <br />
+
+
+    @Html.LabelFor(x => x.Description)
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
     <br />
 
 

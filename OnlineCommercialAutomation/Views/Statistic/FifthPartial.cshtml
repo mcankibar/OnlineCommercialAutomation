@@ -1,0 +1,80 @@
+﻿@model List<OnlineCommercialAutomation.Models.Classes.CategoryGroup>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Category Table</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Category</th>
+                    <th>Progress</th>
+                    <th style="width: 40px">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var totalAmount = Model.Sum(x => x.Count);
+                    int i = 1;
+                }
+                @foreach (var item in Model)
+                {
+                    var percentage = (double)item.Count / totalAmount * 100;
+
+                    string progressBarClass;
+                    if (percentage <= 30)
+                    {
+                        progressBarClass = "bg-primary";
+                    }
+                    else if (percentage <= 60)
+                    {
+                        progressBarClass = "bg-warning";
+                    }
+                    else
+                    {
+                        progressBarClass = "bg-success";
+                    }
+
+                    string badgeClass;
+                    if (percentage <= 30)
+                    {
+                        badgeClass = "badge bg-danger";
+                    }
+                    else if (percentage <= 60)
+                    {
+                        badgeClass = "badge bg-warning";
+                    }
+                    else
+                    {
+                        badgeClass = "badge bg-success";
+                    }
+                    <tr>
+                        <td>@i.</td>
+                        <td>@item.Category</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar @progressBarClass" style="width: @percentage%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-@badgeClass">@item.Count</span></td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+        <ul class="pagination pagination-sm m-0 float-right">
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+        </ul>
+    </div>
+</div>

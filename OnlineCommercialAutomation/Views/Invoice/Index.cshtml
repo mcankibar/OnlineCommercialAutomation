@@ -1,0 +1,71 @@
+﻿@model List<OnlineCommercialAutomation.Models.Classes.Invoice>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Serial Number
+        </th>
+        <th>
+            Order Number
+        </th>
+        <th>
+            Tax Office
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            TotalAmount
+        </th>
+        <th>
+            Delivery By
+        </th>
+        <th>
+            Received By
+        </th>
+        <th>
+            Update
+        </th>
+        <th>
+            Invoice Item
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.SerialNumber</td>
+            <td>@item.OrderNumber</td>
+            <td>@item.TaxOffice</td>
+            <td>@item.Date</td>
+            <td>@item.Time</td>
+            <td>@item.TotalAmount</td>
+            <td>@item.DeliveredBy</td>
+            <td>@item.ReceivedBy</td>
+
+            <td><a href="/Invoice/InvoiceUpdate/@item.Id" class="btn btn-info">Update</a></td>
+            <td><a href="/Invoice/InvoiceDetail/@item.Id" class="btn btn-dark">Details</a></td>
+            
+
+        </tr>
+    }
+
+
+</table>
+
+<a href="/Invoice/InvoiceAdd" class="btn btn-primary">Add Invoice</a>

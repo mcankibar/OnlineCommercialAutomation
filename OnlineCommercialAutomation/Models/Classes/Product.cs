@@ -9,6 +9,11 @@ namespace OnlineCommercialAutomation.Models.Classes
 {
     public class Product
     {
+
+      
+
+
+
         [Key]
         public int Id { get; set; }
 
@@ -32,6 +37,11 @@ namespace OnlineCommercialAutomation.Models.Classes
         public virtual Category Category { get; set; }
 
         public ICollection<SalesTransaction> SalesTransactions { get; set; }
+
+        public  virtual ProductDetail ProductDetail { get; set; }
+
+
+       
 
 
 

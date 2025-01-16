@@ -1,0 +1,85 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.SalesTransaction
+
+@{
+    ViewBag.Title = "SaleUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>SaleUpdate</h2>
+
+<form class="from-group" method="post">
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.LabelFor(x => x.Product)
+    @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.Products, new { @class = "form-control", id = "ProductDropdown" })
+
+    <br />
+    @Html.LabelFor(x => x.Customer)
+    @Html.DropDownListFor(x => x.CustomerId, (List<SelectListItem>)ViewBag.Customers, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Personal)
+    @Html.DropDownListFor(x => x.PersonalId, (List<SelectListItem>)ViewBag.Personals, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Amount)
+    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control", id = "AmountInput", type = "number", min = "1" })
+
+    <br />
+
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", id = "PriceInput", @readonly = "readonly" })
+
+    <br />
+    @Html.LabelFor(x => x.TotalPrice)
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", id = "TotalPriceInput", @readonly = "readonly" })
+
+
+    <br />
+
+    <!-- Date -->
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control", type = "date" })
+
+    <br />
+
+
+
+    <button class="btn btn-info">Update</button>
+
+
+
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Update price and total price when product changes
+        $("#ProductDropdown").change(function () {
+            var productId = $(this).val();
+            if (productId) {
+                $.getJSON('/Sale/GetProductPrice', { productId: productId }, function (data) {
+                    $("#PriceInput").val(data || 0); // Set product price
+                    updateTotalPrice();
+                });
+            } else {
+                $("#PriceInput").val(0);
+                updateTotalPrice();
+            }
+        });
+
+        // Update total price when amount changes
+        $("#AmountInput").on("input", function () {
+            updateTotalPrice();
+        });
+
+        // Function to update total price
+        function updateTotalPrice() {
+            var price = parseFloat($("#PriceInput").val()) || 0;
+            var amount = parseInt($("#AmountInput").val()) || 0;
+            var totalPrice = price * amount;
+            $("#TotalPriceInput").val(totalPrice.toFixed(2)); // Set total price
+        }
+    });
+</script>

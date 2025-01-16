@@ -1,0 +1,42 @@
+﻿@model OnlineCommercialAutomation.Models.Classes.SalesTransaction
+@{
+    ViewBag.Title = "SaleDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<h2>SaleDetail</h2>
+<br />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>Sale ID</th>
+        <th>Product</th>
+        <th>Customer</th>
+        <th>Personal</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Total Price</th>
+        <th>Date</th>
+        <th>
+            Print
+        </th>
+    </tr>
+    
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Product.Name</td>
+            <td>@Model.Customer.Name @Model.Customer.Surname</td>
+            <td>@Model.Personal.Name @Model.Personal.Surname</td>
+            <td>@Model.Price</td>
+            <td>@Model.Amount</td>
+            <td>@Model.TotalPrice</td>
+            <td>@Model.Date</td>
+            <td><a href="#" class="btn btn-info" style="background-color:cadetblue">Print</a></td>
+        </tr>
+    
+
+</table>
+

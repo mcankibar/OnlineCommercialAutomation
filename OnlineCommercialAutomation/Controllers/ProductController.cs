@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineCommercialAutomation.Models.Classes;
+using OnlineCommercialAutomation.ViewModels;
 
 namespace OnlineCommercialAutomation.Controllers
 {
@@ -30,8 +31,24 @@ namespace OnlineCommercialAutomation.Controllers
 
         [HttpPost]
 
-        public ActionResult ProductAdd(Product product)
+        public ActionResult ProductAdd(ProductVM productVM)
         {
+            var product = new Product
+            {
+                Name = productVM.Name,
+                Manufacturer = productVM.Manufacturer,
+                Stock = productVM.Stock,
+                PurchasePrice = productVM.PurchasePrice,
+                SalePrice = productVM.SalePrice,
+                CategoryId = productVM.CategoryId,
+                ProductImageUrl = productVM.ProductImageUrl,
+                IsActive = productVM.IsActive
+                
+            };
+
+            var productDetail = new ProductDetail { Description= productVM.Description};
+
+            product.ProductDetail = productDetail;
             context.Products.Add(product);
             context.SaveChanges();
 
@@ -79,6 +96,17 @@ namespace OnlineCommercialAutomation.Controllers
 
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ProductList()
+        {
+            var productList = context.Products.ToList();
+            
+            
+
+
+
+            return View(productList);
         }
 
     }
